@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyce & Derick - Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background: #f8f6f2;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Header/Navigation */
+header {
+  background: linear-gradient(135deg, #d4af37, #f0e68c);
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Hero Section */
+.hero {
+  background-image: url("wedding entrance.jfif");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: slideUp 1s ease;
+}
+
+.hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(32px, 6vw, 64px);
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: clamp(16px, 2vw, 24px);
+  font-style: italic;
+}
+
+/* Main Content Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Styles */
+section {
+  padding: 60px 20px;
+}
+
+section h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(32px, 5vw, 48px);
+  text-align: center;
+  margin-bottom: 40px;
+  color: #d4af37;
+}
+
+/* Welcome Section */
+.welcome {
+  text-align: center;
+}
+
+.envelope {
+  width: 250px;
+  height: 180px;
+  background: #eee;
+  margin: 40px auto;
+  position: relative;
+  animation: slideUp 1s ease forwards;
+}
+
+.envelope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ddd, #fff);
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+}
+
+.seal {
+  width: 70px;
+  height: 70px;
+  background: gold;
+  border-radius: 50%;
+  position: absolute;
+  top: 55px;
+  left: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.welcome-text {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #666;
+}
+
+/* Couple Section */
+.couple {
+  background: #fff;
+}
+
+.couple-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.couple-img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 20px;
+  animation: zoomIn 1s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.couple-text h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(32px, 5vw, 56px);
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.couple-text p {
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-style: italic;
+  color: #666;
+  margin: 20px 0;
+}
+
+/* Details Section */
+.details-section {
+  background: #f8f6f2;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.detail-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-5px);
+}
+
+.detail-card h3 {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(24px, 3vw, 32px);
+  color: #d4af37;
+  margin-bottom: 15px;
+}
+
+.detail-card p {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: #666;
+  line-height: 1.8;
+}
+
+/* Location Section */
+.location {
+  background: white;
+}
+
+.location-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.location-info h3 {
+  font-size: clamp(20px, 2.5vw, 28px);
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.location-info p {
+  font-size: clamp(14px, 1.5vw, 18px);
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.map-container {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 300px;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Button Styles */
+.btn-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+button {
+  padding: clamp(10px, 1vw, 15px) clamp(20px, 2vw, 30px);
+  border: none;
+  border-radius: 25px;
+  background: #d4af37;
+  color: black;
+  font-weight: bold;
+  font-size: clamp(14px, 1.2vw, 16px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: #f0e68c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+footer p {
+  font-size: clamp(14px, 1.5vw, 16px);
+  margin-bottom: 10px;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .couple-content {
+    grid-template-columns: 1fr;
+  }
+
+  .location-content {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .hero {
+    height: 300px;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .detail-card {
+    padding: 20px;
+  }
+
+  .map-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+  }
+
+  .couple-text h1 {
+    font-size: 28px;
+  }
+
+  section {
+    padding: 30px 15px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .envelope {
+    width: 180px;
+    height: 130px;
+    margin: 30px auto;
+  }
+
+  .seal {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    top: 40px;
+    left: 65px;
+  }
+
+  /* Mobile Navigation */
+  .hamburger {
+    display: flex;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #d4af37, #f0e68c);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  nav ul.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  nav a {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header/Navigation -->
+<header>
+  <nav>
+    <div class="nav-left">
+      <div class="logo">J & D</div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <ul id="nav-menu">
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#couple">Our Story</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="welcome">
+  <div class="hero-content">
+    <h1>Joyce & Derick</h1>
+    <p>We were a promise, and God fulfilled it</p>
+  </div>
+</section>
+
+<!-- Welcome Section -->
+<section class="welcome container">
+  <div class="envelope">
+    <div class="seal">J/D</div>
+  </div>
+  <h2>Welcome</h2>
+  <p class="welcome-text">You are cordially invited to the joyous occasion of becoming one</p>
+</section>
+
+<!-- Couple Section -->
+<section class="couple" id="couple">
+  <div class="container">
+    <div class="couple-content">
+      <img src="couple.jpg" class="couple-img" alt="Couple Image">
+      <div class="couple-text">
+        <h1>Our Love Story</h1>
+        <p>"We were a promise, and God fulfilled it"</p>
+        <p>Join us as we celebrate the beginning of our forever journey together. Our love is a testament to God's blessing and grace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Details Section -->
+<section class="details-section" id="details">
+  <div class="container">
+    <h2>Wedding Details</h2>
+    <div class="details-grid">
+      <div class="detail-card">
+        <h3>Date</h3>
+        <p><strong>Saturday, July 04, 2026</strong></p>
+      </div>
+      <div class="detail-card">
+        <h3>Time</h3>
+        <p><strong>4:00 PM</strong></p>
+      </div>
+      <div class="detail-card">
+        <h3>Attire</h3>
+        <p><strong>Traditional Wear</strong></p>
+      </div>
+      <div class="detail-card">
+        <h3>Reception</h3>
+        <p>Dinner & Dancing to follow</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Location Section -->
+<section class="location" id="location">
+  <div class="container">
+    <h2>Wedding Location</h2>
+    <div class="location-content">
+      <div class="location-info">
+        <h3>Venue</h3>
+        <p><strong>Bamenda, Ade Metas beside Hot Coco</strong></p>
+        <p>A beautiful traditional setting perfect for our special day.</p>
+        <div class="btn-group">
+          <button onclick="alert('Directions coming soon!')">Get Directions</button>
+          <button onclick="alert('RSVP feature coming soon!')">RSVP</button>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.8819730025427!2d-122.4194155!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ2JzQ3LjsiTiAxMjLCsDI1JzA5LjYiVw!5e0!3m2!1sen!2sus!4v1234567890"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 Joyce & Derick's Wedding | All Rights Reserved</p>
+  <p>Thank you for celebrating with us!</p>
+</footer>
+
+<script>
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+navMenu.addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  }
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
